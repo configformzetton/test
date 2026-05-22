@@ -60,7 +60,21 @@
     <div class="container">
         <h1>🚀 Test Website</h1>
         <p>This is a simple test website ready to deploy!</p>
-        <a href="#" class="button">Get Started</a>
+        <div style="margin: 30px 0; font-size: 2em; font-weight: bold; color: #667eea;">
+            Clicks: <span id="clickCount">0</span>
+        </div>
+        <button class="button" id="clickBtn" style="border: none; cursor: pointer;">Click Me!</button>
     </div>
+
+    <script>
+        let clicks = localStorage.getItem('clickCount') || 0;
+        document.getElementById('clickCount').textContent = clicks;
+
+        document.getElementById('clickBtn').addEventListener('click', function() {
+            clicks++;
+            localStorage.setItem('clickCount', clicks);
+            document.getElementById('clickCount').textContent = clicks;
+        });
+    </script>
 </body>
 </html>
